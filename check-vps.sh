@@ -22,6 +22,7 @@ swap=$(free -m | grep  Swap | awk 'NR==1' | awk '{ print $2 }')
 up=$(uptime|awk '{ $1=$2=$(NF-6)=$(NF-5)=$(NF-4)=$(NF-3)=$(NF-2)=$(NF-1)=$NF=""; print }')
 cache=$((wget -O /dev/null http://cachefly.cachefly.net/100mb.test) 2>&1 | tail -2 | head -1 | awk '{print $3 $4 }')
 io=$( (dd if=/dev/zero of=test_$$ bs=64k count=16k conv=fdatasync &&rm -f test_$$) 2>&1 | tail -1| awk '{ print $(NF-1) $NF }')
+IPS=$(dig -4 TXT +short o-o.myaddr.l.google.com @ns1.google.com | awk -F'"' '{ print $2}')
 ############################################################################
 DISK_SIZE_TOTAL=$(df -kh . | tail -n1 | awk '{print $2}')
 DISK_SIZE_FREE=$(df -kh . | tail -n1 | awk '{print $4}')
@@ -32,6 +33,7 @@ INODE_SIZE_FREE=$(df -ih . | tail -n1 | awk '{print $4}')
 INODE_PERCENT_USED=$(df -ih . | tail -n1 | awk '{print $5}')
 
 echo "############################################################################"
+echo "IP VPS : $IPS"
 echo "CPU model : $cname"
 echo "Number of cores : $cores"
 echo "CPU frequency : $freq MHz"
