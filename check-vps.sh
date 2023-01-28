@@ -43,14 +43,14 @@ echo "I/O speed : $io"
 echo "Thông tin DISK "
 echo "I/O speed : $io"
 
-echo "############################-- Thông Tin Disk --##############################"
+echo "################-- Thông Tin Disk > 100% is full --#########################"
 echo "Total size Disk : $DISK_SIZE_TOTAL"
 echo "Total size Free : $DISK_SIZE_FREE"
 echo "Total size Used : $DISK_PERCENT_USED"
-echo "############################-- Thông Tin Inode --#############################"
+echo "################-- Thông Tin Inode > 100% is full --#########################"
 
-echo "Total size INODES : $INODE_SIZE_TOTAL"
-echo "Total size INODES : $INODE_SIZE_FREE"
+#echo "Total size INODES : $INODE_SIZE_TOTAL"
+#echo "Total size INODES : $INODE_SIZE_FREE"
 echo "Total size Used INODES : $INODE_PERCENT_USED"
 
 #echo "${DISK_SIZE_FREE}" available out of "${DISK_SIZE_TOTAL}" total ("${DISK_PERCENT_USED}" used).
