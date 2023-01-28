@@ -43,11 +43,11 @@ echo "I/O speed : $io"
 echo "Thông tin DISK "
 echo "I/O speed : $io"
 
-echo "############################-- Thông Tin Disk --################################################"
+echo "############################-- Thông Tin Disk --##############################"
 echo "Total size Disk : $DISK_SIZE_TOTAL"
 echo "Total size Free : $DISK_SIZE_FREE"
 echo "Total size Used : $DISK_PERCENT_USED"
-echo "############################-- Thông Tin Inode --################################################"
+echo "############################-- Thông Tin Inode --#############################"
 
 echo "Total size INODES : $INODE_SIZE_TOTAL"
 echo "Total size INODES : $INODE_SIZE_FREE"
