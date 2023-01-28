@@ -33,9 +33,9 @@ INODE_SIZE_FREE=$(df -ih . | tail -n1 | awk '{print $4}')
 INODE_PERCENT_USED=$(df -ih . | tail -n1 | awk '{print $5}')
 
 echo "############################################################################"
-echo "IP VPS : $IPS"
 echo "CPU model : $cname"
 echo "Number of cores : $cores"
+echo "IP VPS : $IPS"
 echo "CPU frequency : $freq MHz"
 echo "Total amount of ram : $tram MB"
 echo "Total amount of swap : $swap MB"
