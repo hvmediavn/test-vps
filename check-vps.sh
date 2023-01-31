@@ -54,6 +54,7 @@ echo "################-- Thông Tin Inode > 100% is full --#####################
 #echo "Total size INODES : $INODE_SIZE_TOTAL"
 #echo "Total size INODES : $INODE_SIZE_FREE"
 echo "Total size Used INODES : $INODE_PERCENT_USED"
+rm -f $pwdd/check-vps.sh
 
 #echo "${DISK_SIZE_FREE}" available out of "${DISK_SIZE_TOTAL}" total ("${DISK_PERCENT_USED}" used).
 
