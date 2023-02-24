@@ -54,6 +54,58 @@ echo "################-- Thông Tin Inode > 100% is full --#####################
 #echo "Total size INODES : $INODE_SIZE_TOTAL"
 #echo "Total size INODES : $INODE_SIZE_FREE"
 echo "Total size Used INODES : $INODE_PERCENT_USED"
+
+
+echo "################-- Thông Tin Ram-PHP-FPM --#########################"
+
+yum install calc -y
+svip=$(wget http://ipecho.net/plain -O - -q ; echo)
+cpuname=$( awk -F: '/model name/ {name=$2} END {print name}' /proc/cpuinfo )
+cpucores=$( awk -F: '/model name/ {core++} END {print core}' /proc/cpuinfo )
+cpufreq=$( awk -F: ' /cpu MHz/ {freq=$2} END {print freq}' /proc/cpuinfo )
+svram=$( free -m | awk 'NR==2 {print $2}' )
+svhdd=$( df -h | awk 'NR==2 {print $2}' )
+svswap=$( free -m | awk 'NR==3 {print $2}' )
+echo "=========================================================================="
+echo "Thong Tin Server:  "
+echo "--------------------------------------------------------------------------"
+echo "Server Type: $(virt-what | awk 'NR==1 {print $NF}')"
+echo "CPU Type: $cpuname"
+echo "CPU Core: $cpucores"
+echo "CPU Speed: $cpufreq MHz"
+echo "Memory: $svram MB"
+echo "Disk: $svhdd"
+echo "IP: $svip"
+
+	ramformariadb=$(calc $svram/10*6)
+	ramforphpnginx=$(calc $svram-$ramformariadb)
+	max_children=$(calc $ramforphpnginx/30)
+	memory_limit=$(calc $ramforphpnginx/5*3)M
+	mem_apc=$(calc $ramforphpnginx/5)M
+	buff_size=$(calc $ramformariadb/10*8)M
+	log_size=$(calc $ramformariadb/10*2)M
+
+
+echo "=========================================================================="
+echo "Thong Tin Server:  "
+echo "--------------------------------------------------------------------------"
+echo "Server Type: $(virt-what | awk 'NR==1 {print $NF}')"
+echo "ramformariadb Type: $ramformariadb"
+echo "ramforphpnginx: $ramforphpnginx"
+echo "max_children: $max_children"
+echo "memory_limit: $memory_limit"
+echo "mem_apc: $mem_apc"
+echo "buff_size: $buff_size"
+echo "log_size : $log_size"
+
+echo "################-- Thông Tin Ram-PHP-FPM --#########################"
+
+
+
+
+
+
+
 rm -f $pwdd/check-vps.sh
 
 #echo "${DISK_SIZE_FREE}" available out of "${DISK_SIZE_TOTAL}" total ("${DISK_PERCENT_USED}" used).
