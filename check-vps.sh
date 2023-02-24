@@ -3,6 +3,7 @@
 ## Author : Hoang Nam
 ## Last Updated : 27/01/2023
 ## Company : AZDIG
+yum install calc -y
 pwdd=`pwd`
 cat << "EOF"
  _   _                                          _   _
